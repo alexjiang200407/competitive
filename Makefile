@@ -1,7 +1,7 @@
 SRC_DIR=src
 BIN_DIR=bin
 CC=g++
-CFLAGS=-g -Wall -Wextra -O2
+CFLAGS=-g -Wall
 
 
 UTIL_FILES:=$(shell find . -type f -name '*.cpp' -path "./util/*")
