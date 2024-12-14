@@ -39,6 +39,20 @@ str s1,s2,s3;
 
 int dp[N][N];
 
+/**
+ * Solution:
+ * 
+ * We proceed using dynamic programming. Our dp state has two parameters
+ * 
+ * 1. The current position of the top word
+ * 2. The current position of the bottom word
+ * 
+ * The dp matrix finds the minimum solution if we are at the given position.
+ * 
+ * Our dp transitions by selecting the minimum value of either choosing the next top letter
+ * or the next bottom letter.
+ */
+
 int solve(int i, int j)
 {
     if(i+j>=SZ(s3))
