@@ -39,7 +39,7 @@ class RangeTree
 public:
     void init(ll n)
     {
-        tree = new T[n];
+        tree = new T[4*n];
     }
 
     T query(int qL, int qR, int i = 1, int cL = 0, int cR = n) const
