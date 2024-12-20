@@ -49,10 +49,30 @@ bool operator<(const std::bitset<N>& x, const std::bitset<N>& y)
     return false;
 }
 
+
+/**
+ * SOLUTION:
+ * 
+ * We solve this by accepting these facts:
+ * 
+ * 1. One of the sets must be the full bitset because it will always 
+ *    contain the most significant bit
+ * 
+ * 2. We should then aim to choose a subset that will change the
+ *    most significant 0 bit to a 1 bit. This means the subset size
+ *    will be given by i+1 where i is the index (0 indexed) of the first 0th bit from the left
+ * 
+ * 3. For each possible sized bitmask (m-sz in total where m is input size) we check if it is the
+ *    greatest possible bitmask O(n^2) operation in total.
+ * 
+ * 4. The above methods do not handle cases where there are no 0 bits. In this case we simply just
+ *    subtract 1 from the input by choosing a size 1 bitmask and the original.
+ * 
+ */
 signed main(void)
 {
-    // ios_base::sync_with_stdio(false);
-	// cin.tie(NULL);
+    ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
 
     cin>>t;
     while(t--)
