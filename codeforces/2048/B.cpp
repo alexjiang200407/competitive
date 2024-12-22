@@ -36,6 +36,15 @@ const int directions[4][2]={-1,0,0,-1,0,1,1,0};
 const int N=1e5+5;
 int n,t,k,ans[N];
 
+
+/**
+ * SOLUTION:
+ * 
+ * We simply distribute the smallest numbers every k elements so that the smallest
+ * possible elements are always chosen.
+ * 
+ * 
+ */
 signed main(void)
 {
     ios_base::sync_with_stdio(false);

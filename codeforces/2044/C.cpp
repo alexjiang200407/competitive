@@ -10,7 +10,6 @@
 #include <cmath>
 #include <tuple>
 #include <map>
-#include <string>
 
 using namespace std;
 
@@ -36,19 +35,6 @@ const int directions[4][2]={-1,0,0,-1,0,1,1,0};
 
 int n,t;
 
-
-/**
- * SOLUTION:
- * 
- * Removing a consecutive 33 can be mathematically represented as:
- * x*10^(p+2)+33*10^p+y-(33*10^p+99*10^p)
- * 
- * Since 33*10^p+99*10^p is divisble by 33 this means that removing consecutive 33s is essentially
- * just subtracting 33 a number of times. Therefore if the original number is not divisible by 33
- * in the first place it will never be able to reach 0.
- * 
- */
-
 signed main(void)
 {
     ios_base::sync_with_stdio(false);
@@ -56,10 +42,12 @@ signed main(void)
     cin>>t;
     while(t--)
     {
-        cin>>n;
-        if(n%33==0) cout<<"YES";
-        else cout<<"NO";
-        cout<<'\n';
+        int m,a,b,c;
+        cin>>m>>a>>b>>c;
+
+        int ans=min(m,a)+min(m,b)+min(c,2*m-min(m,a)-min(m,b));
+        cout<<ans<<'\n';
     }
+
     return 0;
 }
