@@ -11,6 +11,7 @@
 #include <tuple>
 #include <map>
 #include <unordered_map>
+#include <memory>
 
 using namespace std;
 
@@ -38,16 +39,13 @@ const int directions[2][2]={0,1,1,0};
 
 int n,m,t,c;
 
-#include <iostream>
-#include <memory>
-
 class Array2D {
 private:
     int rows, cols;
     unique_ptr<int[]> data;
 
 public:
-    Array2D(int r, int c) : rows(r), cols(c), data(std::make_unique<int[]>(r*c)) {}
+    Array2D(int r, int c) : rows(r), cols(c), data(make_unique<int[]>(r*c)) {}
 
     int& operator()(int r, int c) { return data[r*cols+c]; }
     const int& operator()(int r, int c) const { return data[r*cols+c]; }
