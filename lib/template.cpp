@@ -26,6 +26,7 @@ typedef pair<long, long> pllll;
 #define Debug(x) cout << #x " = " << (x) << '\n'
 #define for_n(s, e, i) for (ll i = s; i < e; i++)
 #define for_e(e,of) for (auto& e : of)
+#define clr(arr) memset(arr,0,sizeof(arr))
 #define pb push_back
 
 const ll MOD=1e9+7;
