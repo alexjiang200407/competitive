@@ -29,6 +29,7 @@ typedef pair<long, long> pllll;
 #define for_n(s, e, i) for (ll i = s; i < e; i++)
 #define for_e(e,of) for (auto& e : of)
 #define clr(arr) memset(arr,0,sizeof(arr))
+#define heap_array(t,sz) make_unique<t[]>(sz); 
 #define pb push_back
 
 const ll MOD=1e9+7;
@@ -67,45 +68,38 @@ signed main(void)
         cin>>n>>m;
         auto a=Array2D(n+1,m+1);
         unordered_map<int,int> colorIdx;
+
+        auto hasColor=heap_array(int,n*m+5);
+        auto hasAdj=heap_array(int,n*m+5);
         auto adjC=make_unique<int[]>(n*m+5);
 
         for_n(0,n,i)
-        {
             for_n(0,m,j)
-            {
                 cin>>a(i,j);
-            }
-        }
 
         for_n(0,n,i)
         {
             for_n(0,m,j)
             {
-                if (colorIdx.find(a(i,j))==colorIdx.end())
-                {
-                    colorIdx[a(i,j)]=c++;
-                }
-
+                hasColor[a(i,j)-1]=1;
                 for_e(dir,directions)
                 {
                     if(i+dir[0]<0||i+dir[0]>=n||j+dir[1]<0||j+dir[1]>=m) continue;
                     if(a(i,j)==a(i+dir[0],j+dir[1]))
                     {
-                        adjC[colorIdx[a(i,j)]]++;
+                        hasAdj[a(i,j)-1]=1;
                     }
                 }
             }
         }
-
-        int ans=c-1;
-        int mx=-2e10;
-        for_n(0,c,i)
+        int ans=0;
+        int mx=-1e10;
+        for_n(0,n*m+5,i)
         {
-            mx=max(mx,adjC[i]);
-            ans+=adjC[i];
+            ans+=hasColor[i]+hasAdj[i];
+            mx=max(mx,hasAdj[i]);
         }
-
-        cout<<ans-mx<<'\n';
+        cout<<(ans-1-mx)<<'\n';
     }
 
     return 0;
