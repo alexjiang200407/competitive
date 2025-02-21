@@ -34,11 +34,38 @@ ll madd(ll a, ll b) { return (a + b) % MOD; }
 
 const int directions[4][2]={-1,0,0,-1,0,1,1,0};
 
-int n;
+const int N=2e5+5;
+int n,t,a[N];
 
+/**
+ * SOLUTION:
+ * We proceed greedily. Since we want the items on the left to be smaller
+ * we always try to subtract the following value if it is greater than the current
+ * item.
+ */
 signed main(void)
 {
-    // ios_base::sync_with_stdio(false);
-	// cin.tie(NULL);
+    ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+    cin>>t;
+    while(t--)
+    {
+        cin>>n;
+        
+        for_n(0,n,i)
+        {
+            cin>>a[i];
+        }
+
+        for_n(0,n,i)
+        {
+            if(a[i]<=a[i+1])
+            {
+                a[i+1]-=a[i];
+                a[i]=0;
+            }
+        }
+        cout<<(is_sorted(a,a+n)?"YES":"NO")<<'\n';
+    }
     return 0;
 }
