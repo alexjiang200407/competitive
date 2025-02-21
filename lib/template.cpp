@@ -28,6 +28,8 @@ typedef pair<long, long> pllll;
 #define for_e(e,of) for (auto& e : of)
 #define clr(arr) memset(arr,0,sizeof(arr))
 #define pb push_back
+#define heap_array(t,sz) make_unique<t[]>(sz); 
+#define heap_array_fill(a,sz,v) fill(a.get(),a.get()+sz,v); 
 
 const ll MOD=1e9+7;
 ll madd(ll a, ll b) { return (a + b) % MOD; }
